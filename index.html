@@ -421,6 +421,123 @@
   <div class="stat"><div class="stat-num">6+</div><div class="stat-label">Countries</div></div>
 </div>
 
+
+
+<!-- CAMERA / TECH ADVANTAGE SECTION -->
+<section style="background:var(--dark);padding:48px 20px;">
+  <div class="section-inner">
+
+    <!-- Section label -->
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(245,166,35,0.15);border:1px solid rgba(245,166,35,0.4);border-radius:20px;padding:6px 14px;margin-bottom:16px">
+      <span style="width:7px;height:7px;background:var(--gold);border-radius:50%;display:inline-block"></span>
+      <span style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:1px;text-transform:uppercase">Technology Advantage</span>
+    </div>
+
+    <!-- Invention-style label -->
+    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(245,166,35,0.08);border:1px solid rgba(245,166,35,0.2);border-radius:8px;padding:5px 12px;margin-bottom:14px">
+      <span style="font-size:16px">🔬</span>
+      <span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase">Introducing</span>
+    </div>
+    <h2 style="font-size:26px;font-weight:800;color:#ffffff;line-height:1.2;margin-bottom:6px;letter-spacing:-0.5px">
+      The <span style="color:var(--gold)">NoteVision</span> Camera —
+    </h2>
+    <h3 style="font-size:16px;font-weight:600;color:rgba(255,255,255,0.6);margin-bottom:4px;letter-spacing:0.2px">
+      Exclusively designed for online classes
+    </h3>
+    <h3 style="font-size:18px;font-weight:700;color:rgba(255,255,255,0.75);margin-bottom:12px;letter-spacing:-0.3px">
+      Like having your tutor sit right beside you
+    </h3>
+    <p style="font-size:14px;color:rgba(255,255,255,0.5);margin-bottom:24px;line-height:1.7;border-left:3px solid var(--gold);padding-left:12px">
+      Our students use a <strong style="color:rgba(255,255,255,0.85);font-weight:700">high-resolution NoteVision camera</strong> — the tutor sees every sum, diagram and handwriting in crystal clear detail, live. It's the closest thing to a private tutor sitting in your room.
+    </p>
+
+    <!-- Media Carousel -->
+    <div style="position:relative;margin-bottom:24px">
+      <!-- Slides -->
+      <div id="mediaSlider" style="border-radius:16px;overflow:hidden;position:relative;background:#000;min-height:300px;">
+        <!-- Slide 1: Image 1 -->
+        <div class="slide" style="display:block">
+          <img src="https://raw.githubusercontent.com/Protutor-Home-Tuitions/online-class/main/images/Student_attending_online_202603312338.jpeg" alt="Student attending online class with document camera" style="width:100%;height:100%;object-fit:cover;object-position:center bottom;display:block"/>
+          <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:20px 16px 14px">
+            <p style="font-size:13px;font-weight:700;color:white;margin:0">Student solving maths with live tutor feedback</p>
+          </div>
+        </div>
+
+        <!-- Slide 2: Video -->
+        <div class="slide" style="display:none">
+          <video id="demoVideo" muted playsinline
+            style="width:100%;height:100%;display:block;object-fit:cover;object-position:center center;position:absolute;top:0;left:0">
+            <source src="https://raw.githubusercontent.com/Protutor-Home-Tuitions/online-class/main/images/download.mp4" type="video/mp4">
+          </video>
+          <div style="position:absolute;top:12px;left:12px;background:#ef4444;border-radius:6px;padding:4px 10px;font-size:11px;font-weight:700;color:white;letter-spacing:0.5px">● LIVE DEMO</div>
+          <!-- Video progress bar -->
+          <div style="position:absolute;bottom:0;left:0;right:0;height:4px;background:rgba(255,255,255,0.15)">
+            <div id="videoProgress" style="height:100%;width:0%;background:var(--gold);border-radius:0 2px 2px 0;transition:width 0.3s linear"></div>
+          </div>
+          <!-- Time remaining -->
+          <div id="videoTimer" style="position:absolute;bottom:10px;right:12px;background:rgba(0,0,0,0.5);border-radius:6px;padding:3px 8px;font-size:11px;font-weight:700;color:rgba(255,255,255,0.8)">0:00</div>
+        </div>
+
+        <!-- Slide 3: Image 2 -->
+        <div class="slide" style="display:none">
+          <img src="https://raw.githubusercontent.com/Protutor-Home-Tuitions/online-class/main/images/Student_attending_online_202603312338%20(2).jpeg" alt="Girl student in online class using document camera" style="width:100%;height:100%;object-fit:cover;object-position:center bottom;display:block"/>
+          <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:20px 16px 14px">
+            <p style="font-size:13px;font-weight:700;color:white;margin:0">Tutor sees student's notebook in real time</p>
+          </div>
+        </div>
+
+        <!-- Slide 4: Image 3 -->
+        <div class="slide" style="display:none">
+          <img src="https://raw.githubusercontent.com/Protutor-Home-Tuitions/online-class/main/images/Student_attending_online_202603312338%20(3).jpeg" alt="Student using document camera for online tutoring" style="width:100%;height:100%;object-fit:cover;object-position:center bottom;display:block"/>
+          <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:20px 16px 14px">
+            <p style="font-size:13px;font-weight:700;color:white;margin:0">Private 1-on-1 session — full attention on your child</p>
+          </div>
+        </div>
+
+        <!-- Prev / Next arrows -->
+        <button onclick="changeSlide(-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.45);border:none;color:white;width:34px;height:34px;border-radius:50%;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center">&#8249;</button>
+        <button onclick="changeSlide(1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.45);border:none;color:white;width:34px;height:34px;border-radius:50%;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center">&#8250;</button>
+      </div>
+
+      <!-- Dots -->
+      <div style="display:flex;justify-content:center;gap:6px;margin-top:12px" id="sliderDots">
+        <span class="dot active-dot" onclick="goToSlide(0)" style="width:20px;height:8px;border-radius:4px;background:var(--gold);cursor:pointer;transition:all 0.2s"></span>
+        <span class="dot" onclick="goToSlide(1)" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.25);cursor:pointer;transition:all 0.2s"></span>
+        <span class="dot" onclick="goToSlide(2)" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.25);cursor:pointer;transition:all 0.2s"></span>
+        <span class="dot" onclick="goToSlide(3)" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.25);cursor:pointer;transition:all 0.2s"></span>
+      </div>
+    </div>
+
+    <!-- 3 Feature cards -->
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px">
+      <div style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:14px 16px">
+        <div style="width:40px;height:40px;background:rgba(245,166,35,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">📷</div>
+        <div>
+          <div style="font-size:14px;font-weight:700;color:#ffffff;margin-bottom:3px">HD NoteVision Camera</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);line-height:1.5">Capture notebooks, textbooks &amp; diagrams in full HD clarity</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:14px 16px">
+        <div style="width:40px;height:40px;background:rgba(245,166,35,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">🎥</div>
+        <div>
+          <div style="font-size:14px;font-weight:700;color:#ffffff;margin-bottom:3px">Live 1-on-1 Video Class</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);line-height:1.5">Tutor sees exactly what student is writing — in real time</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:14px 16px">
+        <div style="width:40px;height:40px;background:rgba(245,166,35,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">⚡</div>
+        <div>
+          <div style="font-size:14px;font-weight:700;color:#ffffff;margin-bottom:3px">Instant Feedback</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);line-height:1.5">Mistakes corrected on the spot — no waiting, no confusion</div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</section>
+
 <!-- SUBJECTS -->
 <section class="section" id="subjects" style="padding-top:8px">
   <div class="section-inner">
@@ -571,6 +688,75 @@
     if(window.scrollY > 60) header.classList.add('scrolled');
     else header.classList.remove('scrolled');
   });
+
+
+  // Image/Video Slider
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+
+  // showSlide defined below with video logic
+
+  function changeSlide(dir) { showSlide(currentSlide + dir); }
+  function goToSlide(n) { showSlide(n); }
+
+  // Slider with video awareness
+  let autoTimer = null;
+  const demoVideo = document.getElementById('demoVideo');
+
+  function showSlide(n) {
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    slides.forEach(s => s.style.display = 'none');
+    dots.forEach(d => { d.style.background = 'rgba(255,255,255,0.25)'; d.style.width='8px'; d.style.borderRadius='50%'; });
+    currentSlide = (n + slides.length) % slides.length;
+    slides[currentSlide].style.display = 'block';
+    dots[currentSlide].style.background = 'var(--gold)';
+    dots[currentSlide].style.width = '20px';
+    dots[currentSlide].style.borderRadius = '4px';
+    // If video slide — play video, pause auto timer
+    if (currentSlide === 1 && demoVideo) {
+      demoVideo.currentTime = 0;
+      demoVideo.play();
+      clearInterval(autoTimer);
+    } else {
+      startAutoPlay();
+    }
+  }
+
+  function startAutoPlay() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => changeSlide(1), 5000);
+  }
+
+  // Video progress bar
+  const videoProgress = document.getElementById('videoProgress');
+  const videoTimer = document.getElementById('videoTimer');
+
+  if (demoVideo) {
+    demoVideo.addEventListener('timeupdate', () => {
+      if (demoVideo.duration) {
+        const pct = (demoVideo.currentTime / demoVideo.duration) * 100;
+        if (videoProgress) videoProgress.style.width = pct + '%';
+        // Show time remaining
+        const remaining = Math.ceil(demoVideo.duration - demoVideo.currentTime);
+        const mins = Math.floor(remaining / 60);
+        const secs = remaining % 60;
+        if (videoTimer) videoTimer.textContent = mins + ':' + String(secs).padStart(2,'0');
+      }
+    });
+
+    // When video ends move to next slide and reset bar
+    demoVideo.addEventListener('ended', () => {
+      if (videoProgress) videoProgress.style.width = '100%';
+      setTimeout(() => {
+        if (videoProgress) videoProgress.style.width = '0%';
+        showSlide(2);
+      }, 300);
+    });
+  }
+
+  startAutoPlay();
 
   // Rotating text animation
   const words = ['CBSE','ICSE','IGCSE','IB','NEET','School Prep','Home Schooling'];
