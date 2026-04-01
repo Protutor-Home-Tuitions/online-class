@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Block admin or private paths if any in future
+Disallow: /api/
+Disallow: /.env
+
+# Sitemap location
+Sitemap: https://onlinetuition.protutor.in/sitemap.xml
+
+# Crawl delay (optional - be kind to crawlers)
+Crawl-delay: 1
