@@ -398,9 +398,7 @@
         Book Demo Class
       </a>
     </div>
-    <a class="btn-outline" href="#subjects">
-      🎓 Explore All Courses
-    </a>
+
   </div>
   <div style="margin-top:22px;display:inline-flex;align-items:center;gap:0;background:rgba(255,255,255,0.06);border-radius:40px;padding:2px;border:1px solid rgba(255,255,255,0.1)">
     <div style="background:var(--gold);border-radius:40px;padding:8px 16px;display:flex;align-items:center;gap:7px">
@@ -428,27 +426,31 @@
   <div class="section-inner">
 
     <!-- Section label -->
-    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(245,166,35,0.15);border:1px solid rgba(245,166,35,0.4);border-radius:20px;padding:6px 14px;margin-bottom:16px">
-      <span style="width:7px;height:7px;background:var(--gold);border-radius:50%;display:inline-block"></span>
-      <span style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:1px;text-transform:uppercase">Technology Advantage</span>
+
+
+    <!-- Top labels row -->
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(245,166,35,0.15);border:1px solid rgba(245,166,35,0.4);border-radius:20px;padding:6px 14px;width:fit-content">
+        <span style="width:7px;height:7px;background:var(--gold);border-radius:50%;display:inline-block"></span>
+        <span style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:1px;text-transform:uppercase">Technology Advantage</span>
+      </div>
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:6px 14px;width:fit-content">
+        <span style="font-size:13px">🔬</span>
+        <span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:1px;text-transform:uppercase">Introducing</span>
+      </div>
     </div>
 
-    <!-- Invention-style label -->
-    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(245,166,35,0.08);border:1px solid rgba(245,166,35,0.2);border-radius:8px;padding:5px 12px;margin-bottom:14px">
-      <span style="font-size:16px">🔬</span>
-      <span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase">Introducing</span>
-    </div>
-    <h2 style="font-size:26px;font-weight:800;color:#ffffff;line-height:1.2;margin-bottom:6px;letter-spacing:-0.5px">
-      The <span style="color:var(--gold)">NoteVision</span> Camera —
+    <h2 style="font-size:28px;font-weight:800;color:#ffffff;line-height:1.2;margin-bottom:8px;letter-spacing:-0.5px">
+      The <span style="color:var(--gold)">NoteVision</span> Camera
     </h2>
-    <h3 style="font-size:16px;font-weight:600;color:rgba(255,255,255,0.6);margin-bottom:4px;letter-spacing:0.2px">
+    <p style="font-size:13px;font-weight:600;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px">
       Exclusively designed for online classes
-    </h3>
-    <h3 style="font-size:18px;font-weight:700;color:rgba(255,255,255,0.75);margin-bottom:12px;letter-spacing:-0.3px">
+    </p>
+    <p style="font-size:17px;font-weight:700;color:rgba(255,255,255,0.85);margin-bottom:16px;letter-spacing:-0.2px">
       Like having your tutor sit right beside you
-    </h3>
-    <p style="font-size:14px;color:rgba(255,255,255,0.5);margin-bottom:24px;line-height:1.7;border-left:3px solid var(--gold);padding-left:12px">
-      Our students use a <strong style="color:rgba(255,255,255,0.85);font-weight:700">high-resolution NoteVision camera</strong> — the tutor sees every sum, diagram and handwriting in crystal clear detail, live. It's the closest thing to a private tutor sitting in your room.
+    </p>
+    <p style="font-size:14px;color:rgba(255,255,255,0.55);margin-bottom:24px;line-height:1.8;padding-left:14px;border-left:2px solid var(--gold)">
+      Our students use a <strong style="color:#ffffff;font-weight:700">high-resolution NoteVision camera</strong> — the tutor sees every sum, diagram and handwriting in crystal clear detail, live. It's the closest thing to a private tutor sitting in your room.
     </p>
 
     <!-- Media Carousel -->
@@ -682,12 +684,43 @@
 </a>
 
 <script>
-  // Header scroll color change
+  // Smart header — detects section bg color and adapts
   const header = document.getElementById('mainHeader');
-  window.addEventListener('scroll', () => {
-    if(window.scrollY > 60) header.classList.add('scrolled');
-    else header.classList.remove('scrolled');
-  });
+  const darkSections = ['hero', 'contact'];
+
+  function updateHeader() {
+    const scrollY = window.scrollY + 80;
+    // Get element at center of viewport
+    const el = document.elementFromPoint(window.innerWidth / 2, 80);
+    if (!el) return;
+
+    // Walk up to find section background
+    let node = el;
+    let isDark = false;
+    while (node && node !== document.body) {
+      const bg = window.getComputedStyle(node).backgroundColor;
+      if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+        // Parse rgb values
+        const rgb = bg.match(/\d+/g);
+        if (rgb) {
+          const brightness = (parseInt(rgb[0]) * 299 + parseInt(rgb[1]) * 587 + parseInt(rgb[2]) * 114) / 1000;
+          isDark = brightness < 128;
+        }
+        break;
+      }
+      node = node.parentElement;
+    }
+
+    if (isDark) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', updateHeader);
+  window.addEventListener('load', updateHeader);
+  updateHeader();
 
 
   // Image/Video Slider
