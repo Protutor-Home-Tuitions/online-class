@@ -13,18 +13,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install lftp
+        run: sudo apt-get install -y lftp
+
       - name: Deploy via FTP to BigRock
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./
-          server-dir: ${{ secrets.FTP_PATH }}/
-          protocol: ftp
-          port: 21
-          exclude: |
-            **/.git*
-            **/.git*/**
-            .github/**
-            README.md
+        run: |
+          lftp -c "
+          set ftp:ssl-allow no;
+          set net:timeout 30;
+          set net:max-retries 3;
+          open ftp://${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}@119.18.54.24;
+          mirror --reverse --delete --verbose \
+            --exclude .git \
+            --exclude .github \
+            --exclude README.md \
+            ./ ${{ secrets.FTP_PATH }}/;
+          bye"
