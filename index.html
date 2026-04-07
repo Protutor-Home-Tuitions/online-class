@@ -547,6 +547,11 @@
   .step-title{font-size:16px;font-weight:800;color:var(--dark);margin-bottom:4px}
   .step-sub{font-size:12px;color:var(--muted);margin-bottom:16px}
 
+  /* ── COMING SOON: disable unbuilt internal links ── */
+  a[href^="/"]:not(.logo):not(.sticky-wa):not(.footer-logo) {
+    pointer-events: none;
+    cursor: default;
+  }
   </style>
 </head>
 <body>
@@ -1568,8 +1573,7 @@
       board: '', timing: '', tutorGender: '', importance: '', note: ''
     };
 
-    // Save step 1 immediately
-    saveToSheet(formData);
+    // Save step 1 immediately — removed, save only on final submit
     showPopupStep(2);
   }
 
@@ -1733,7 +1737,7 @@
 
   setInterval(rotate, 2000);
 
-  // Pill click overrides rotation
+  // Pill click — rotation only, no navigation (pages not built yet)
   pills.forEach((pill, i) => {
     pill.addEventListener('click', function(e) {
       e.preventDefault();
@@ -1743,8 +1747,6 @@
       el.style.animation = 'fadeSlide 0.5s ease';
       el.textContent = words[i];
       pills.forEach((p, j) => p.classList.toggle('active', j === i));
-      // navigate after short delay
-      setTimeout(() => { window.location.href = this.href; }, 300);
     });
   });
 </script>
