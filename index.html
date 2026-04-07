@@ -1445,8 +1445,7 @@
       grade: '', subjects: '', board: '', timing: '', tutorGender: '', importance: '', note: ''
     };
 
-    saveToSheet(inlineFormData);
-
+    // Don't save here — save only on final submit
     document.getElementById('istep1').style.display = 'none';
     document.getElementById('istep2').style.display = 'block';
     document.getElementById('ibar2').style.background = 'var(--gold)';
