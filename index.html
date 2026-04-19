@@ -1675,18 +1675,27 @@
   }
 
   function swapCamImg(prefix, thumbNum) {
-    var mainImg = document.getElementById(prefix + 'MainImg');
-    var thumb1  = document.getElementById(prefix + 'Thumb1');
-    var thumb2  = document.getElementById(prefix + 'Thumb2');
+    var mainImg      = document.getElementById(prefix + 'MainImg');
+    var thumb1       = document.getElementById(prefix + 'Thumb1');
+    var thumb2       = document.getElementById(prefix + 'Thumb2');
     var clickedThumb = document.getElementById(prefix + 'Thumb' + thumbNum);
     var otherThumb   = thumbNum === 1 ? thumb2 : thumb1;
-    var prevMain = mainImg.src;
+    var prevMainSrc  = mainImg.src;
+    var prevMainFit  = mainImg.style.objectFit;
+    var prevMainPos  = mainImg.style.objectPosition;
+    var prevMainBg   = mainImg.parentElement.style.background;
+    // clicked thumb becomes main — product/scan images use contain on white bg
+    var isLifestyle  = clickedThumb.src.indexOf('cam-lifestyle') !== -1;
     mainImg.src = clickedThumb.src;
-    mainImg.style.objectPosition = 'center center';
-    clickedThumb.src = prevMain;
+    mainImg.style.objectFit      = isLifestyle ? 'cover'    : 'contain';
+    mainImg.style.objectPosition = isLifestyle ? 'center 75%' : 'center center';
+    mainImg.parentElement.style.background = isLifestyle ? '' : '#ffffff';
+    // previous main goes to thumbnail — always cover at small size
+    clickedThumb.src = prevMainSrc;
+    clickedThumb.style.objectFit      = 'cover';
     clickedThumb.style.objectPosition = 'center 75%';
     clickedThumb.style.border = '1px solid #f0e8c8';
-    otherThumb.style.border = '2px solid #d4a843';
+    otherThumb.style.border   = '2px solid #d4a843';
   }
 
   function saveToSheet(data) {
