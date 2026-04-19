@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google Ads Global Site Tag (gtag.js) — replace AW-17093109744 with your Conversion ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17093109744"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17093109744');
+  </script>
   <title>Online Tuition KG to Class 12 | Private Tutor | ProTutor</title>
   <meta name="description" content="Private online tuition for KG to Class 12. Maths, Science, English & more. CBSE, ICSE, IB, IGCSE. One-on-one tutor across India, Dubai, UK & USA." />
   <meta name="robots" content="index, follow" />
@@ -1463,6 +1471,12 @@
   function showInlineSuccess() {
     document.getElementById('istep2').style.display = 'none';
     document.getElementById('isuccess').style.display = 'block';
+
+    // ── Google Ads Conversion (Inline form success page shown) ────────────
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', { 'send_to': 'AW-17093109744/BIMvCLiX5J0cEPDP0NY_' });
+    }
+    // ──────────────────────────────────────────────────────────────────────
   }
 
   // POPUP LOGIC
@@ -1599,6 +1613,12 @@
     document.getElementById('step2').classList.remove('active');
     document.getElementById('popupFooter').style.display = 'none';
     document.getElementById('popupSuccess').classList.add('active');
+
+    // ── Google Ads Conversion (Popup success page shown) ──────────────────
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', { 'send_to': 'AW-17093109744/BIMvCLiX5J0cEPDP0NY_' });
+    }
+    // ──────────────────────────────────────────────────────────────────────
     document.querySelector('.popup-box').scrollTop = 0;
   }
 
