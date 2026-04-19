@@ -1012,13 +1012,15 @@
           <div style="font-size:10px;font-weight:800;color:#7a5c00;letter-spacing:0.3px">MUST-HAVE FOR ONLINE CLASSES</div>
         </div>
         <div style="background:#fffdf7;border:1.5px solid #f0e8c8;border-radius:14px;overflow:hidden;text-align:left">
-          <img src="images/cam-lifestyle.png" alt="Online class camera" style="width:100%;height:150px;object-fit:cover;object-position:center top;display:block"/>
+          <div style="margin:8px 8px 0;border-radius:10px;overflow:hidden;height:160px">
+            <img id="inlineMainImg" src="images/cam-lifestyle.png" alt="Online class camera" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block"/>
+          </div>
           <div style="padding:10px 12px">
             <div style="font-size:12px;font-weight:800;color:var(--dark);margin-bottom:3px">Online Class Camera for Students</div>
             <div style="font-size:11px;color:var(--muted);margin-bottom:10px;line-height:1.5">Your child's tutor needs to see the notebook clearly. This camera makes every session more effective.</div>
             <div style="display:flex;gap:8px;margin-bottom:10px">
-              <img src="images/cam-product.jpeg" alt="Camera" style="width:44px;height:44px;object-fit:cover;border-radius:8px;border:1px solid #f0e8c8;flex-shrink:0"/>
-              <img src="images/cam-scan.jpeg" alt="Camera scanning" style="width:44px;height:44px;object-fit:cover;border-radius:8px;border:1px solid #f0e8c8;flex-shrink:0"/>
+              <img id="inlineThumb1" src="images/cam-product.jpeg" alt="Camera" onclick="swapCamImg('inline',1)" style="width:44px;height:44px;object-fit:cover;border-radius:8px;border:2px solid #d4a843;flex-shrink:0;cursor:pointer"/>
+              <img id="inlineThumb2" src="images/cam-scan.jpeg" alt="Camera scanning" onclick="swapCamImg('inline',2)" style="width:44px;height:44px;object-fit:cover;border-radius:8px;border:1px solid #f0e8c8;flex-shrink:0;cursor:pointer"/>
             </div>
             <div style="font-size:11px;font-weight:700;color:#7a5c00;text-align:center;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:5px">
               <div style="width:6px;height:6px;background:#d4a843;border-radius:50%"></div>
@@ -1434,13 +1436,15 @@
           <div style="font-size:10px;font-weight:800;color:#7a5c00;letter-spacing:0.3px">MUST-HAVE FOR ONLINE CLASSES</div>
         </div>
         <div style="background:#fffdf7;border:1.5px solid #f0e8c8;border-radius:14px;overflow:hidden;text-align:left">
-          <img src="images/cam-lifestyle.png" alt="Online class camera" style="width:100%;height:150px;object-fit:cover;object-position:center top;display:block"/>
+          <div style="margin:8px 8px 0;border-radius:10px;overflow:hidden;height:160px">
+            <img id="popupMainImg" src="images/cam-lifestyle.png" alt="Online class camera" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block"/>
+          </div>
           <div style="padding:10px 12px">
             <div style="font-size:12px;font-weight:800;color:var(--dark);margin-bottom:3px">Online Class Camera for Students</div>
             <div style="font-size:11px;color:var(--muted);margin-bottom:10px;line-height:1.5">Your child's tutor needs to see the notebook clearly. This camera makes every session more effective.</div>
             <div style="display:flex;gap:8px;margin-bottom:10px">
-              <img src="images/cam-product.jpeg" alt="Camera" style="width:44px;height:44px;object-fit:cover;border-radius:8px;border:1px solid #f0e8c8;flex-shrink:0"/>
-              <img src="images/cam-scan.jpeg" alt="Camera scanning" style="width:44px;height:44px;object-fit:cover;border-radius:8px;border:1px solid #f0e8c8;flex-shrink:0"/>
+              <img id="popupThumb1" src="images/cam-product.jpeg" alt="Camera" onclick="swapCamImg('popup',1)" style="width:44px;height:44px;object-fit:cover;border-radius:8px;border:2px solid #d4a843;flex-shrink:0;cursor:pointer"/>
+              <img id="popupThumb2" src="images/cam-scan.jpeg" alt="Camera scanning" onclick="swapCamImg('popup',2)" style="width:44px;height:44px;object-fit:cover;border-radius:8px;border:1px solid #f0e8c8;flex-shrink:0;cursor:pointer"/>
             </div>
             <div style="font-size:11px;font-weight:700;color:#7a5c00;text-align:center;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:5px">
               <div style="width:6px;height:6px;background:#d4a843;border-radius:50%"></div>
@@ -1668,6 +1672,21 @@
     }
     // ──────────────────────────────────────────────────────────────────────
     document.querySelector('.popup-box').scrollTop = 0;
+  }
+
+  function swapCamImg(prefix, thumbNum) {
+    var mainImg = document.getElementById(prefix + 'MainImg');
+    var thumb1  = document.getElementById(prefix + 'Thumb1');
+    var thumb2  = document.getElementById(prefix + 'Thumb2');
+    var clickedThumb = document.getElementById(prefix + 'Thumb' + thumbNum);
+    var otherThumb   = thumbNum === 1 ? thumb2 : thumb1;
+    var prevMain = mainImg.src;
+    mainImg.src = clickedThumb.src;
+    mainImg.style.objectPosition = 'center center';
+    clickedThumb.src = prevMain;
+    clickedThumb.style.objectPosition = 'center 30%';
+    clickedThumb.style.border = '1px solid #f0e8c8';
+    otherThumb.style.border = '2px solid #d4a843';
   }
 
   function saveToSheet(data) {
