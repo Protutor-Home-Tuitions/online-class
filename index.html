@@ -1012,7 +1012,7 @@
           <div style="font-size:10px;font-weight:800;color:#7a5c00;letter-spacing:0.3px">MUST-HAVE FOR ONLINE CLASSES</div>
         </div>
         <div style="background:#fffdf7;border:1.5px solid #f0e8c8;border-radius:14px;overflow:hidden;text-align:left">
-          <div style="margin:8px 8px 0;border-radius:10px;overflow:hidden;height:160px">
+          <div id="inlineMainWrap" style="margin:8px 8px 0;border-radius:10px;overflow:hidden;height:160px;background:#fff">
             <img id="inlineMainImg" src="images/cam-lifestyle.png" alt="Online class camera" style="width:100%;height:100%;object-fit:cover;object-position:center 75%;display:block"/>
           </div>
           <div style="padding:10px 12px">
@@ -1027,7 +1027,7 @@
               Used by 500+ ProTutor students
               <div style="width:6px;height:6px;background:#d4a843;border-radius:50%"></div>
             </div>
-            <a href="https://rzp.io/rzp/online-class-cam" target="_blank" style="display:block;background:#1a1f3a;color:#d4a843;font-weight:800;font-size:12px;font-family:inherit;padding:11px;border-radius:50px;text-decoration:none;text-align:center;border:2px solid #d4a843;letter-spacing:0.3px">See how it works &#8594;</a>
+            <a href="https://rzp.io/rzp/online-class-cam" target="_blank" style="display:block;background:#1a1f3a;color:#d4a843;font-weight:800;font-size:12px;font-family:inherit;padding:11px;border-radius:50px;text-decoration:none;text-align:center;border:2px solid #d4a843;letter-spacing:0.3px">View more details &#8594;</a>
           </div>
         </div>
       </div>
@@ -1436,7 +1436,7 @@
           <div style="font-size:10px;font-weight:800;color:#7a5c00;letter-spacing:0.3px">MUST-HAVE FOR ONLINE CLASSES</div>
         </div>
         <div style="background:#fffdf7;border:1.5px solid #f0e8c8;border-radius:14px;overflow:hidden;text-align:left">
-          <div style="margin:8px 8px 0;border-radius:10px;overflow:hidden;height:160px">
+          <div id="popupMainWrap" style="margin:8px 8px 0;border-radius:10px;overflow:hidden;height:160px;background:#fff">
             <img id="popupMainImg" src="images/cam-lifestyle.png" alt="Online class camera" style="width:100%;height:100%;object-fit:cover;object-position:center 75%;display:block"/>
           </div>
           <div style="padding:10px 12px">
@@ -1451,7 +1451,7 @@
               Used by 500+ ProTutor students
               <div style="width:6px;height:6px;background:#d4a843;border-radius:50%"></div>
             </div>
-            <a href="https://rzp.io/rzp/online-class-cam" target="_blank" style="display:block;background:#1a1f3a;color:#d4a843;font-weight:800;font-size:12px;font-family:inherit;padding:11px;border-radius:50px;text-decoration:none;text-align:center;border:2px solid #d4a843;letter-spacing:0.3px">See how it works &#8594;</a>
+            <a href="https://rzp.io/rzp/online-class-cam" target="_blank" style="display:block;background:#1a1f3a;color:#d4a843;font-weight:800;font-size:12px;font-family:inherit;padding:11px;border-radius:50px;text-decoration:none;text-align:center;border:2px solid #d4a843;letter-spacing:0.3px">View more details &#8594;</a>
           </div>
         </div>
       </div>
@@ -1676,24 +1676,32 @@
 
   function swapCamImg(prefix, thumbNum) {
     var mainImg      = document.getElementById(prefix + 'MainImg');
+    var mainWrap     = document.getElementById(prefix + 'MainWrap');
     var thumb1       = document.getElementById(prefix + 'Thumb1');
     var thumb2       = document.getElementById(prefix + 'Thumb2');
     var clickedThumb = document.getElementById(prefix + 'Thumb' + thumbNum);
     var otherThumb   = thumbNum === 1 ? thumb2 : thumb1;
     var prevMainSrc  = mainImg.src;
-    var prevMainFit  = mainImg.style.objectFit;
-    var prevMainPos  = mainImg.style.objectPosition;
-    var prevMainBg   = mainImg.parentElement.style.background;
-    // clicked thumb becomes main — product/scan images use contain on white bg
     var isLifestyle  = clickedThumb.src.indexOf('cam-lifestyle') !== -1;
+    // swap src
     mainImg.src = clickedThumb.src;
-    mainImg.style.objectFit      = isLifestyle ? 'cover'    : 'contain';
-    mainImg.style.objectPosition = isLifestyle ? 'center 75%' : 'center center';
-    mainImg.parentElement.style.background = isLifestyle ? '' : '#ffffff';
-    // previous main goes to thumbnail — always cover at small size
     clickedThumb.src = prevMainSrc;
+    // main image: lifestyle = cover+crop, product = contain+padding on white
+    if (isLifestyle) {
+      mainImg.style.objectFit      = 'cover';
+      mainImg.style.objectPosition = 'center 75%';
+      mainImg.style.padding        = '0';
+      mainWrap.style.background    = '#fff';
+    } else {
+      mainImg.style.objectFit      = 'contain';
+      mainImg.style.objectPosition = 'center center';
+      mainImg.style.padding        = '12px';
+      mainWrap.style.background    = '#f8f8f8';
+    }
+    // thumbnail always cover
     clickedThumb.style.objectFit      = 'cover';
     clickedThumb.style.objectPosition = 'center 75%';
+    clickedThumb.style.padding        = '0';
     clickedThumb.style.border = '1px solid #f0e8c8';
     otherThumb.style.border   = '2px solid #d4a843';
   }
